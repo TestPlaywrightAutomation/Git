@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: blob-report-${{ matrix.shardIndex }}
-        path: path/to/blob-report  # Ensure this path is correct
+        path: ./blob-report  # Ensure this path is correct
         retention-days: 1
         
   merge-reports:
