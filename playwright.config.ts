@@ -22,11 +22,13 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['list'], // Built-in console reporter
-    //['html', { outputFolder: 'test-results/html-report' }], // HTML reporter
-    ['allure-playwright'] // Allure reporter
-  ],
+  // reporter: [
+  //   ['list'], // Built-in console reporter
+  //   //['html', { outputFolder: 'test-results/html-report' }], // HTML reporter
+  //   ['allure-playwright'] // Allure reporter
+  // ],
+  reporter: process.env.CI ? 'blob' : 'html',
+
   use: {
     // baseURL: 'https://example.com',
     trace: 'on-first-retry',

@@ -4,6 +4,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   playwright-tests:
     timeout-minutes: 60
@@ -11,8 +12,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shardIndex: [0, 1, 2, 3]  # Updated index range
+        shardTotal: [4]  # Total shards count
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -31,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: blob-report-${{ matrix.shardIndex }}
-        path: blob-report
+        path: path/to/blob-report  # Ensure this path is correct
         retention-days: 1
         
   merge-reports:
