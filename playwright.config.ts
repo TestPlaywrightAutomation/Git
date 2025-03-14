@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import path from 'path';
 
 /**
  * Read environment variables from file.
@@ -27,7 +28,8 @@ export default defineConfig({
   //   //['html', { outputFolder: 'test-results/html-report' }], // HTML reporter
   //   ['allure-playwright'] // Allure reporter
   // ],
-  reporter: process.env.CI ? 'blob' : 'html',
+  reporter:[ ['blob', {path : 'blob-report'} ], ['dot']],
+  
 
   use: {
     // baseURL: 'https://example.com',
